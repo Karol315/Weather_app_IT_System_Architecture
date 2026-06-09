@@ -1,0 +1,39 @@
+version: "3.9"
+
+services:
+  db_test:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_DB: weatherdb_test
+      POSTGRES_USER: weatheruser
+      POSTGRES_PASSWORD: weatherpass
+    ports:
+      - "5434:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U weatheruser -d weatherdb_test"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  backend_test:
+    build: ./backend
+    environment:
+      DATABASE_URL: postgresql://weatheruser:weatherpass@db_test:5432/weatherdb_test
+      ENV: test
+    depends_on:
+      db_test:
+        condition: service_healthy
+    volumes:
+      - ./backend:/app
+    command: pytest tests/ -v --tb=short
+
+  ingestion_test:
+    build: ./ingestion
+    environment:
+      DATABASE_URL: postgresql://weatheruser:weatherpass@db_test:5432/weatherdb_test
+    depends_on:
+      db_test:
+        condition: service_healthy
+    volumes:
+      - ./ingestion:/app
+    command: pytest tests/ -v --tb=short
