@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+env/
+.pytest_cache/
+
+# Docker (jeśli masz jakieś lokalne śmieci z dockera)
+.docker/
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
