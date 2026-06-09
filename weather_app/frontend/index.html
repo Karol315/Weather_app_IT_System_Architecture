@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pogoda i Jakość Powietrza — Polska</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+ 
+<header>
+  <h1>Pogoda i Jakość Powietrza</h1>
+  <span>Dane: Open-Meteo + GIOŚ</span>
+</header>
+ 
+<div class="container">
+ 
+  <div id="city-selector" class="city-selector"></div>
+ 
+  <div id="error-msg" class="error-msg" style="display:none"></div>
+  <div id="loading" class="loading" style="display:none">Ładowanie danych...</div>
+ 
+  <div class="grid">
+    <div class="card" id="weather-card">
+      <div class="card-title">Pogoda</div>
+      <div class="loading">Ładowanie...</div>
+    </div>
+    <div class="card" id="air-card">
+      <div class="card-title">Jakość powietrza</div>
+      <div class="loading">Ładowanie...</div>
+    </div>
+  </div>
+ 
+  <div class="chart-card">
+    <div class="chart-header">
+      <h3>Temperatura i wilgotność</h3>
+      <div class="range-btns">
+        <button class="range-btn active" data-chart="weather" data-hours="24">24h</button>
+        <button class="range-btn" data-chart="weather" data-hours="48">48h</button>
+        <button class="range-btn" data-chart="weather" data-hours="168">7 dni</button>
+      </div>
+    </div>
+    <canvas id="weather-chart" height="100"></canvas>
+  </div>
+ 
+  <div class="chart-card">
+    <div class="chart-header">
+      <h3>Jakość powietrza — PM10 / PM2.5</h3>
+    </div>
+    <canvas id="air-chart" height="100"></canvas>
+  </div>
+ 
+</div>
+ 
+<footer>
+  Dane pogodowe: <a href="https://open-meteo.com" target="_blank">Open-Meteo</a> |
+  Jakość powietrza: <a href="https://powietrze.gios.gov.pl" target="_blank">GIOŚ</a> |
+  Mini-projekt PW MiNI
+</footer>
+ 
+<script type="module" src="js/app.js"></script>
+</body>
+</html>

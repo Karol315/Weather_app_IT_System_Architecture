@@ -1,0 +1,134 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #f0f4f8;
+  --surface: #ffffff;
+  --border: #e2e8f0;
+  --text: #1a202c;
+  --text-muted: #718096;
+  --primary: #3182ce;
+  --primary-dark: #2c5282;
+  --success: #38a169;
+  --warning: #d69e2e;
+  --danger: #e53e3e;
+  --radius: 12px;
+  --shadow: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+header {
+  background: var(--primary-dark);
+  color: white;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header h1 { font-size: 20px; font-weight: 600; }
+header span { font-size: 13px; opacity: 0.8; }
+
+.container { max-width: 1200px; margin: 0 auto; padding: 24px 16px; }
+
+.city-selector {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+.city-btn {
+  padding: 8px 18px;
+  border: 2px solid var(--border);
+  border-radius: 50px;
+  background: var(--surface);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-muted);
+  transition: all 0.15s;
+}
+
+.city-btn:hover { border-color: var(--primary); color: var(--primary); }
+.city-btn.active { background: var(--primary); border-color: var(--primary); color: white; }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-bottom: 24px; }
+
+.card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+}
+
+.card-title {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+.big-value {
+  font-size: 42px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1;
+}
+
+.big-value span { font-size: 18px; font-weight: 400; color: var(--text-muted); }
+
+.sub-value {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+
+.metrics-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; }
+
+.metric { padding: 10px; background: var(--bg); border-radius: 8px; }
+.metric-label { font-size: 11px; color: var(--text-muted); }
+.metric-value { font-size: 16px; font-weight: 600; margin-top: 2px; }
+
+.aqi-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.aqi-good    { background: #c6f6d5; color: #22543d; }
+.aqi-medium  { background: #fefcbf; color: #744210; }
+.aqi-bad     { background: #fed7d7; color: #742a2a; }
+.aqi-unknown { background: var(--bg); color: var(--text-muted); }
+
+.chart-card { background: var(--surface); border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow); border: 1px solid var(--border); margin-bottom: 16px; }
+.chart-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+.chart-header h3 { font-size: 15px; font-weight: 600; }
+
+.range-btns { display: flex; gap: 4px; }
+.range-btn { padding: 4px 10px; border: 1px solid var(--border); border-radius: 6px; background: var(--surface); font-size: 12px; cursor: pointer; }
+.range-btn.active { background: var(--primary); border-color: var(--primary); color: white; }
+
+.error-msg { padding: 12px 16px; background: #fff5f5; border: 1px solid #feb2b2; border-radius: 8px; color: #c53030; font-size: 14px; margin-bottom: 16px; }
+.loading { text-align: center; padding: 40px; color: var(--text-muted); font-size: 14px; }
+
+.station-info { font-size: 12px; color: var(--text-muted); margin-top: 8px; }
+
+.updated-at { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
+
+footer { text-align: center; padding: 24px; font-size: 12px; color: var(--text-muted); border-top: 1px solid var(--border); margin-top: 32px; }
+
+@media (max-width: 600px) {
+  .grid { grid-template-columns: 1fr; }
+  .big-value { font-size: 32px; }
+}
